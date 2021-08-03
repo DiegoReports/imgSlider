@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frutas & Legumes | devNatural</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <section>
+    <div class="bg"></div>
+
+    <header>
+      <a href="#" class="logo">Frutas</a>
+      <div class="toggle"></div>
+      <ul class="navigation">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Novidades</a></li>
+        <li><a href="#">Contato</a></li>
+        <li><a href="#">Saiba Mais</a></li>
+      </ul>
+    </header>
+
+    <div class="content">
+      <div class="textBox">
+        <h2>Comida Fresca Todos os dias</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates omnis adipisci sunt tempore, quasi deserunt corporis eos sit fugiat debitis placeat in ducimus at veritatis velit! Deserunt dolorum officiis saepe!</p>
+        <a href="#">Saiba Mais</a>
+      </div>
+      <div class="imgBox" >
+        <img src="./assets/apple.png" class="fruits" alt="maçã">
+      </div>
+    </div>
+    <ul class="thumb">
+      <li data-text="Maçã" class="active"><img src="./assets/apple.png" onclick="imgSlider('./assets/apple.png');changeBgColor('#fc4a55')"  alt="maçã-thumbnail"></li>
+      <li data-text="Manga"><img src="./assets/mango.png" onclick="imgSlider('./assets/mango.png');changeBgColor('#ffcc02')" alt="manga-thumbnail"></li>
+      <li data-text="Melancia"><img src="./assets/watermelon.png" onclick="imgSlider('./assets/watermelon.png');changeBgColor('#92ba3c')" alt="melancia-thumbnail"></li>
+      <li data-text="Pitaia"><img src="./assets/dragonFruits.png" onclick="imgSlider('./assets/dragonFruits.png');changeBgColor('#fb6cb2')" alt="pitaia-thumbnail"></li>
+      <li data-text="Abacaxi"><img src="./assets/pineApple.png" onclick="imgSlider('./assets/pineApple.png');changeBgColor('#ffb42b')" alt="abacaxi-thumbnail"></li>
+    </ul>
+
+    <ul class="sci">
+      <li><a href="#"><img src="./assets/facebook.png" alt="facebook"></a></li>
+      <li><a href="#"><img src="./assets/twitter.png" alt="twitter"></a></li>
+      <li><a href="#"><img src="./assets/instagram.png" alt="instagram"></a></li>
+    </ul>
+  </section>
+
+  <script>
+    let menuToggle = document.querySelector('.toggle');
+    let navigation = document.querySelector('.navigation');
+    menuToggle.onclick = function() {
+      menuToggle.classList.toggle('active');
+      navigation.classList.toggle('active');
+    }
+
+
+    //MUDANDO A IMG DE FRUTA
+    function imgSlider(anything) {
+      document.querySelector('.fruits').src = anything;
+    }
+    
+    //ALTERANDO A COR BACKGROUND
+    function changeBgColor(color) {
+      const bg = document.querySelector('.bg');
+      bg.style.background = color;
+    }
+
+
+    //ADD CLASSE "ACTIVE" NO SELETOR THUMBNAILS
+    let el = document.querySelectorAll('.thumb li');
+    for (let i = 0; i <el.length; i++) {
+      el[i].onclick = function(){
+        var c = 0;
+        while (c < el.length){
+          el[c++].className = 'check';
+        }
+        el[i].className = 'check active';
+      }
+    }
+  </script>
+</body>
+</html>
